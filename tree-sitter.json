@@ -1,0 +1,21 @@
+{
+  "grammars": [
+    {
+      "name": "phh",
+      "camelcase": "Phh",
+      "scope": "source.phh",
+      "path": ".",
+      "file-types": ["phh", "phhs"],
+      "injection-regex": "^phh$"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Tree-sitter grammar for the PHH (Poker Hand History) format",
+    "authors": [],
+    "links": {
+      "repository": "https://github.com/REPLACE_ME/tree-sitter-phh"
+    }
+  }
+}
