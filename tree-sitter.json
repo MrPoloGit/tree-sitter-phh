@@ -15,7 +15,7 @@
     "description": "Tree-sitter grammar for the PHH (Poker Hand History) format",
     "authors": [],
     "links": {
-      "repository": "https://github.com/REPLACE_ME/tree-sitter-phh"
+      "repository": "https://github.com/MrPoloGit/tree-sitter-phh"
     }
   }
 }
