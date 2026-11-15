@@ -29,7 +29,7 @@
 
 ; -- PHH-specific: variant codes and required field names ------------------
 ; These two patterns are text-matched rather than driven from
-; phh/registry/variants.json: a query can't read an external JSON file.
+; phh-data/registry/variants.json: a query can't read an external JSON file.
 ; Every editor's LSP-side hover/completion (via phh-ls) reads that same
 ; registry, so the two stay independently consistent.
 (pair

@@ -10,7 +10,7 @@ itself (see `grammar.js`'s file header for why).
 ## Status
 
 Generates cleanly with `tree-sitter generate` (ABI 15) and parses the full
-corpus at `../phh/corpus/` with **zero `ERROR` nodes**, including all five
+corpus at `../phh-data/corpus/` with **zero `ERROR` nodes**, including all five
 `invalid/` fixtures, which is correct: they are semantically invalid (wrong
 field for the variant, illegal action verb, etc.), not syntactically invalid,
 and L0 (grammar) / L1 (registry-driven semantic checks, not built yet) are
@@ -24,7 +24,7 @@ compute "everything up to the next table" itself).
 
 Deliberately **not** implemented: multi-line strings, inline tables, TOML
 dates/datetimes, array-of-tables (`[[key]]`). No PHH field or action needs
-any of these (`phh/registry/fields.json`, `phh/registry/actions.json`); a
+any of these (`phh-data/registry/fields.json`, `phh-data/registry/actions.json`); a
 document using one is valid TOML but not valid PHH, which surfaces as an L1
 diagnostic from `phh-ls`, not a grammar error. Multi-line strings would need
 a hand-written external C scanner to be correct, since tree-sitter's lexer
@@ -38,7 +38,7 @@ uses.
 Before `basic_string`/`literal_string` used `token.immediate` on their
 content, a `#` character *inside* a quoted string (e.g.
 `event = "2019 WSOP Event #58"` in
-`../phh/corpus/valid/arieh-esposito-hui-yockey-2019.phh`, a real hand from
+`../phh-data/corpus/valid/arieh-esposito-hui-yockey-2019.phh`, a real hand from
 `phh-std/examples.rst`) was swallowed by the `comment` extra: tree-sitter's
 longest-match lexing picked the much-longer `comment` token over the
 single-character content regex it was competing against, consuming the rest
@@ -61,7 +61,7 @@ inspection; the grammar "looked right" before this was caught.
 
 ## What's next (not started here)
 
-- `phh-ls` (the LSP server) consuming this grammar plus `phh/registry/` for
+- `phh-ls` (the LSP server) consuming this grammar plus `phh-data/registry/` for
   diagnostics, hover, and completion.
 - A VS Code TextMate grammar kept in sync with this one via a golden-scope
   test, since VS Code does not consume tree-sitter grammars directly.

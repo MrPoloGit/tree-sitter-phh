@@ -5,15 +5,15 @@
  * flat sequence of key/value pairs; a .phhs file is zero or more top-level
  * tables, each one hand, with no constraint on the table key (confirmed
  * against pokerkit.notation.HandHistory.load_all with both sequential-integer
- * and arbitrary string keys, see phh/corpus/valid/phhs-nonsequential-keys.phhs).
+ * and arbitrary string keys, see phh-data/corpus/valid/phhs-nonsequential-keys.phhs).
  *
  * Covers the TOML subset PHH actually uses: bare/quoted keys, basic and
  * literal strings, integers, floats (including inf/nan), booleans, local
  * time, arrays, and standard-table headers ([key]). Does not implement
  * multi-line strings, inline tables, dates, datetimes, or array-of-tables
  * ([[key]]) headers, since nothing in the PHH field catalogue
- * (phh/registry/fields.json) or the action-notation grammar
- * (phh/registry/actions.json) needs them. A document using one of these
+ * (phh-data/registry/fields.json) or the action-notation grammar
+ * (phh-data/registry/actions.json) needs them. A document using one of these
  * forms is valid TOML but not valid PHH, and surfaces as a semantic
  * (registry-level) diagnostic from phh-ls rather than a grammar error.
  *
@@ -22,7 +22,7 @@
  * insignificant whitespace between tokens, same as tree-sitter-json.
  *
  * The contents of each string inside the `actions` array are a separate
- * micro-grammar (phh/registry/actions.json), left as an opaque string node
+ * micro-grammar (phh-data/registry/actions.json), left as an opaque string node
  * here; `tree-sitter-phh-actions` parses them, wired in via
  * queries/injections.scm.
  */
@@ -79,7 +79,7 @@ module.exports = grammar({
     // content-char alternative it competes with, tree-sitter's longest-match
     // rule picks the comment, swallowing the rest of the line including the
     // closing quote. Confirmed by hitting exactly this bug against
-    // phh/corpus/valid/arieh-esposito-hui-yockey-2019.phh's `event` field,
+    // phh-data/corpus/valid/arieh-esposito-hui-yockey-2019.phh's `event` field,
     // which contains a literal '#' character, before adding token.immediate.
     basic_string: ($) =>
       seq(
